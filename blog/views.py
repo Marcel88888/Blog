@@ -17,7 +17,7 @@ class PostsListView(ListView):
 
     def get_queryset(self):
         #  'lte' - less than or equal to
-        return Post.objects.filter(publication_date__lte=timezone.now()).order_by('-published_date')
+        return Post.objects.filter(publication_date__lte=timezone.now()).order_by('-publication_date')
 
 
 class PostDetailsView(DetailView):
