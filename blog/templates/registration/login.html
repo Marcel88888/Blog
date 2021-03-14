@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    <div class="jumbotron">
+        <h2>Log in:</h2>
+
+        {% if form.errors %}
+            <p>Your username or password is incorrect.</p>
+        {% endif %}
+
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class="btn btn-primary" value="Login">
+            <input type="hidden" name="next" value="{{ next }}">
+{#            'next' says what will be the next site after logging in.#}
+{#            It is from 'path('accounts/login/', views.LoginView.as_view(), name='login')' from urls.py.#}
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'blog/base.html'%}
+{% block content %}
+
+    <h1 class="posttitle loader">{{ post.title }}</h1>
+
+    {% if post.publication_date %}
+        <div class="date postdate">
+            {{ post.publication_date }}
+        </div>
+    {% else %}
+        <a class="btn btn-secondary" href="{% url 'publish_post' pk=post.pk %}">Publish</a>
+    {% endif %}
+
+    <p class="postconent">{{ post.text | safe | linebreaksbr }}</p>
+
+    {% if user.is_authenticated %}
+        <a class="btn btn-primary" href="{% url 'edit_post' pk=post.pk %}"><span class="fa fa-pencil"></span></a>
+        <a class="btn btn-primary" href="{% url 'delete_post' pk=post.pk %}"><span class="fa fa-remove"></span></a>
+    {% endif %}
+
+{#    horizontal row#}
+    <hr>
+    <a class="btn btn-primary btn-comment" href="{% url 'add_comment_to_post' pk=post.pk %}">Comment</a>
+
+    <div class="container">
+        {% for comment in post.comments.all %}
+            <br>
+            {% if user.is_authenticated or comment.approved %}
+                {{ comment.creation_date }}
+                {% if not comment.approved %}
+                    <a class="btn btn-primary" href="{% url 'delete_comment' pk=comment.pk %}"><span class="fa fa-remove"></span></a>
+                    <a class="btn btn-primary" href="{% url 'approve_comment' pk=comment.pk %}"><span class="fa fa-check"></span></a>
+                {% endif %}
+                <p>{{ comment.text | safe | linebreaksbr }}</p>
+                <p>posted by {{ comment.author | safe | linebreaksbr }}</p>
+            {% endif %}
+            {% empty %}
+                <p>No comments yet.</p>
+        {% endfor %}
+    </div>
+
+{% endblock %}
