@@ -2,7 +2,6 @@
 {% block content %}
     <div class="jumbotron">
         <h2>Log in:</h2>
-        <h3>(Must be a superuser.)</h3>
 
         {% if form.errors %}
             <p>Your username or password is incorrect.</p>
@@ -10,7 +9,7 @@
 
         <form action="{% url 'login' %}" method="post">
             {% csrf_token %}
-            {% form.as_p %}
+            {{ form.as_p }}
             <input type="submit" class="btn btn-primary" value="Login">
             <input type="hidden" name="next" value="{{ next }}">
 {#            'next' says what will be the next site after logging in.#}

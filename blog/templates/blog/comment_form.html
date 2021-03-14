@@ -3,8 +3,8 @@
     <h1>Add a comment</h1>
     <form class="post-form" method="post">
         {% csrf_token %}
-        {% form.as_p %}
-        <button type="submit" class="save btn btn-default">Comment</button>
+        {{ comment_form.as_p }}
+        <button type="submit" class="save btn btn-secondary">Comment</button>
     </form>
     <script>var editor = new MediumEditor('.editable');</script>
 {% endblock %}
