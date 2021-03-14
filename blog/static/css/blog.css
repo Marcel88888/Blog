@@ -8,6 +8,12 @@
   font-size: 1.5em;
 }
 
+/*'margin: auto;' would be the same but this way is clearer.*/
+.centerstage {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /*COLOR CHANGER*/
 /*Credit and Source: http://codepen.io/thapliyalshivam/pen/dvgXVO*/
 .loader{
@@ -40,8 +46,8 @@
     transform:translate(0px,0px);
   }
 }
+
 @keyframes hue{
   0%{filter: hue-rotate(0deg);}
   100%{filter:hue-rotate(360deg);}
-
 }
