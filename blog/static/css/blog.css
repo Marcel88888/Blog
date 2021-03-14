@@ -14,11 +14,34 @@
   margin-right: auto;
 }
 
+.postdate {
+  text-align: center;
+}
+
+.posttitle {
+  font-family: 'Alfa Slab One', cursive;
+  font-size: 3em;
+  text-align: center;
+}
+
+.postconent {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5em;
+}
+
+.btn-comment {
+  /*To be on the right: */
+  position: absolute;
+  /*0px*/
+  right: 0;
+}
+
+
 /*COLOR CHANGER*/
 /*Credit and Source: http://codepen.io/thapliyalshivam/pen/dvgXVO*/
 .loader{
   filter:hue-rotate(0deg);
-  background: linear-gradient(45deg,#0f8,#08f);
+  /*background: linear-gradient(45deg,#0f8,#08f);*/
   animation:hue 5000ms infinite linear;
 }
 
